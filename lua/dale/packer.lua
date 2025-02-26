@@ -42,7 +42,17 @@ return require('packer').startup(function(use)
         }
     }
 
+    use {
+        'rmagatti/auto-session',
+        config = function()
+            require("auto-session").setup {
+                suppressed_dirs = { "~/", "~/Projects", "~/Downloads", "/"},
+            }
+        end
+    }
+
     use "tpope/vim-surround"
+    use "wesQ3/vim-windowswap"
 
     use {'morhetz/gruvbox', as = "gruvbox"}
     use {'olimorris/onedarkpro.nvim', as = "onedark"}
