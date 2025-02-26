@@ -44,5 +44,6 @@ return require('packer').startup(function(use)
 
   use {'morhetz/gruvbox', as = "gruvbox"}
   use {'olimorris/onedarkpro.nvim', as = "onedark"}
+  use {'rebelot/kanagawa.nvim', as = "kanagawa"}
 end)
 

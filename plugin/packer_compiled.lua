@@ -89,6 +89,11 @@ _G.packer_plugins = {
     path = "/Users/dalehuang/.local/share/nvim/site/pack/packer/start/gruvbox",
     url = "https://github.com/morhetz/gruvbox"
   },
+  kanagawa = {
+    loaded = true,
+    path = "/Users/dalehuang/.local/share/nvim/site/pack/packer/start/kanagawa",
+    url = "https://github.com/rebelot/kanagawa.nvim"
+  },
   ["lsp-zero.nvim"] = {
     loaded = true,
     path = "/Users/dalehuang/.local/share/nvim/site/pack/packer/start/lsp-zero.nvim",
