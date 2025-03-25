@@ -51,6 +51,14 @@ return require('packer').startup(function(use)
         end
     }
 
+    use {
+        "windwp/nvim-autopairs",
+        event = "InsertEnter",
+        config = function()
+            require("nvim-autopairs").setup {}
+        end
+    }
+
     use "tpope/vim-surround"
     use "wesQ3/vim-windowswap"
 
