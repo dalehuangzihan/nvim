@@ -10,22 +10,10 @@ return require('packer').startup(function(use)
     -- LSP stuff
     use { "williamboman/mason.nvim" }
     use { 'williamboman/mason-lspconfig.nvim' }
-    use { 'neovim/nvim-lspconfig' }
-
-    -- use {
-    --     'VonHeikemen/lsp-zero.nvim',
-    --     branch = 'v3.x',
-    --     requires = {
-    --         --- Uncomment the two plugins below if you want to manage the language servers from neovim
-    --         { 'williamboman/mason.nvim' },
-    --         { 'williamboman/mason-lspconfig.nvim' },
-
-    --         { 'neovim/nvim-lspconfig' },
-    --         { 'hrsh7th/nvim-cmp' },
-    --         { 'hrsh7th/cmp-nvim-lsp' },
-    --         { 'L3MON4D3/LuaSnip' },
-    --     }
-    -- }
+    use { 'hrsh7th/nvim-cmp' }
+    use { 'hrsh7th/cmp-nvim-lsp' }
+    use { 'L3MON4D3/LuaSnip' }
+    -- use { 'neovim/nvim-lspconfig' }
 
     -- Other plugins
     use {
