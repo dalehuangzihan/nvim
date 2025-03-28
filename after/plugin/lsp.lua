@@ -6,6 +6,17 @@ lsp.preset("recommended")
 --	sign_icons = {}
 -- })
 
+-------------------------------------------------------------
+-- # Add cmp_nvim_lsp capabilities settings to lspconfig # --
+-------------------------------------------------------------
+-- This should be executed before you configure any language server
+local lspconfig_defaults = require('lspconfig').util.default_config
+lspconfig_defaults.capabilities = vim.tbl_deep_extend(
+    'force',
+    lspconfig_defaults.capabilities,
+    require('cmp_nvim_lsp').default_capabilities()
+)
+
 -------------------------
 -- # Set up nvim-cmp # --
 -------------------------
@@ -41,9 +52,9 @@ cmp.setup({
     }),
 })
 
----------------------------------
--- # Set up custom behaviour # --
----------------------------------
+------------------------------------------------------------------
+-- # Set up custom behaviour for when lang server is attached # --
+------------------------------------------------------------------
 
 lsp.on_attach(function(client, bufnr)
     -- see :help lsp-zero-keybindings to learn the available actions
@@ -65,7 +76,7 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set('n', 'gR', function() vim.lsp.buf.rename() end, opts)
     vim.keymap.set({ 'n', 'x' }, 'gF', function() vim.lsp.buf.format({ async = true }) end, opts)
     vim.keymap.set('n', 'gC', function() vim.lsp.buf.code_action() end, opts)
-    vim.keymap.set( "n", "gl", function() vim.diagnostic.open_float() end, opts)
+    vim.keymap.set("n", "gl", function() vim.diagnostic.open_float() end, opts)
 
     -- -- TODO: is broken... needs fix
     -- -- fancy rename (https://blog.viktomas.com/graph/neovim-lsp-rename-normal-mode-keymaps/)
@@ -115,9 +126,16 @@ require('mason-lspconfig').setup({
         'yamlls',
     },
     handlers = {
-        lsp.default_setup,
+        -- Auto LS setup:
+        function(server_name)
+            require('lspconfig')[server_name].setup({})
+        end,
+        -- lsp.default_setup,
     }
 })
+
+-- require('lspconfig').gopls.setup({})
+-- require('lspconfig').rust_analyzer.setup({})
 
 -----------------------
 -- # Trigger Setup # --
