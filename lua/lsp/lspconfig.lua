@@ -65,6 +65,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
         if client:supports_method('textDocument/codeAction') then
             vim.keymap.set('n', 'gC', function() vim.lsp.buf.code_action() end, opts)
         end
+        if client:supports_method('textDocument/diagnostic') then
+            -- TODO: check if this conditional works.
+            vim.keymap.set( "n", "gl", function() vim.diagnostic.open_float() end, opts)
+        end
+
     end,
 })
 
