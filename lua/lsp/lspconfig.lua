@@ -1,3 +1,7 @@
+---------------------------------------
+-- # Configure Custom Key Mappings # --
+---------------------------------------
+
 vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('my.lsp', {}),
     callback = function(args)
@@ -64,7 +68,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end,
 })
 
+----------------------------------------------------
 -- # Set up LSP Code Suggestions & Autocomplete # --
+----------------------------------------------------
+
 -- Set up nvim-cmp.
 local cmp = require 'cmp'
 cmp.setup({
@@ -136,14 +143,17 @@ cmp.setup.cmdline(':', {
     matching = { disallow_symbol_nonprefix_matching = false }
 })
 
--- Set up nvim-lspconfig.
+-- Set up nvim-lspconfig. -- Dale: it's just getting a set of default capabilities
 local cmp_nvim_lsp_config_defaults = require('cmp_nvim_lsp').default_capabilities()
 -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
 -- require('lspconfig')['<YOUR_LSP_SERVER>'].setup {
 --     capabilities = capabilities
 -- }
 
+----------------------
 -- # Set up Mason # --
+----------------------
+
 require('mason').setup({})
 require('mason-lspconfig').setup({
     ensure_installed = {
@@ -159,7 +169,10 @@ require('mason-lspconfig').setup({
     },
 })
 
+------------------------------------------
 -- # Language-Specific Configurations # --
+------------------------------------------
+
 vim.lsp.config('*', {
     capabilities = cmp_nvim_lsp_config_defaults,
     -- capabilities = {
