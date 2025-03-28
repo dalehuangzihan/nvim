@@ -1,1 +1,2 @@
 require("dale")
+require("lsp")
