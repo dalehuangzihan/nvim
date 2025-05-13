@@ -17,7 +17,7 @@ return {
     quickfile = { enabled = true },
     scope = { enabled = true },
     scroll = { enabled = true },
-    statuscolumn = { enabled = true },
+    statuscolumn = { enabled = false }, -- disable snacks statuscolumn
     words = { enabled = true },
   },
 }
